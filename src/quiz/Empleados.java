@@ -13,12 +13,13 @@ public class Empleados {
     
      class nodo {
         public String cedula;
+        public String nombreEmp;
         
         nodo sig;
 
-        public nodo(String cedula) {
+        public nodo(String cedula, String nombreEmp) {
             this.cedula = cedula;
-            
+            this.nombreEmp = nombreEmp;
         }
 
     }//Fin clase nodo

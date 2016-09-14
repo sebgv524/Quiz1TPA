@@ -13,11 +13,14 @@ public class Servicios {
     class nodo {
         public String cedula;
         public String codigo;
+        public int dia;
         
         nodo sig;
 
-        public nodo(String cedula, String codigo) {
+        public nodo(String cedula, String codigo, int dia) {
             this.cedula = cedula;           
+            this.codigo = cedula;           
+            this.dia = dia;           
         }
 
     }//Fin clase nodo
@@ -33,9 +36,9 @@ public class Servicios {
         boolean existe = false;
         Empleados emp = new Empleados();
         Bus bs = new Bus();
-        if(){
-            
-        }
+//        if(){
+//            
+//        }
         return existe;
     }
     public boolean vacia() {
