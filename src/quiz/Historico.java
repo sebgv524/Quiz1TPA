@@ -18,19 +18,20 @@ import java.net.URLConnection;
  */
 public class Historico {
 
-    public void sePuede() throws MalformedURLException, IOException {
+    String empleado;
+
+    public Historico(String empleado) throws IOException {
+        this.empleado = empleado;
+        serviciosTomados(empleado);
+        cantViajes();
+    }
+
+
+    private int maximo() throws IOException {
         URL pcgull = new URL("http://www.giraldojorge.com/jorge/quiz/quiztpa/quiz216/historico.txt");
         URLConnection pcg = pcgull.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(pcg.getInputStream()));
-        String inputLine;
-        String[] v;
-        int co = 0;
-        
-        cantViajes(in);
 
-    }
-
-    public int maximo(BufferedReader in) throws IOException {
         String inputLine = in.readLine();
         String[] v;
         int max = inputLine.split(";").length;
@@ -42,16 +43,15 @@ public class Historico {
         }
         return max;
     }
-    
 
-    public void cantViajes(BufferedReader in) throws IOException {
+    private void cantViajes() throws IOException {
         URL pcgull2 = new URL("http://www.giraldojorge.com/jorge/quiz/quiztpa/quiz216/historico.txt");
         URLConnection pcg2 = pcgull2.openConnection();
         BufferedReader in2 = new BufferedReader(new InputStreamReader(pcg2.getInputStream()));
         int co = 0;
         String inputLine;
         String[] v;
-        int max = maximo(in);
+        int max = maximo();
 
         while ((inputLine = in2.readLine()) != null) {
             v = inputLine.split(";");
@@ -62,7 +62,37 @@ public class Historico {
 
         System.out.println("Cantidad de viajes con mayor numero de empleados: " + co);
     }
-    
-    
+
+    private boolean esta(String buscaren, String encontrar) {
+        int tmnoBuscar = buscaren.length();
+        int tmnoEncontrar = encontrar.length();
+        boolean foundIt = false;
+        for (int i = 0;
+                i <= (tmnoBuscar - tmnoEncontrar);
+                i++) {
+            if (buscaren.regionMatches(i, encontrar, 0, tmnoEncontrar)) {
+                foundIt = true;
+                break;
+            }
+        }
+        return foundIt;
+    }
+
+    private void serviciosTomados(String emp) throws MalformedURLException, IOException {
+        URL pcgull = new URL("http://www.giraldojorge.com/jorge/quiz/quiztpa/quiz216/historico.txt");
+        URLConnection pcg = pcgull.openConnection();
+        BufferedReader in = new BufferedReader(new InputStreamReader(pcg.getInputStream()));
+        String inputLine;
+        String[] v;
+        int co = 0;
+        while ((inputLine = in.readLine()) != null) {
+            v = inputLine.split(";");
+            if (esta(v[1], emp)) {
+                co++;
+            }
+        }
+        System.out.printf("El empleado \"%s\" tomó: %d servicios. \n", emp, co);
+
+    }
 
 }

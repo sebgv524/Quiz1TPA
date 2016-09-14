@@ -16,8 +16,7 @@ public class Quiz {
         Scanner teclado  = new Scanner(System.in);
         Random rnd = new Random();
         String cc;
-        Historico h = new Historico();
-        h.sePuede();
+        Historico h = new Historico("E12");
 //        Empleados emp = new Empleados();
 //        for (int i = 1; i <= 10; i++) {
 //            emp.insertarFinal("E"+i);   
