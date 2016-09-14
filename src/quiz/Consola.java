@@ -27,18 +27,19 @@ public class Consola {
         Empleados emp = new Empleados();
         Bus bus = new Bus();
         Servicios serv = new Servicios();
+        listadoEsp listEsp = new listadoEsp();
         
         System.out.print("********************************************** \n"
                 + "*    Bienvenido                           *\n"
                 + "*******************************************\n"
-                + "*   1. Registrar empleado                 *"
-                + "*   2. Registrar bus                      *"
-                + "*   3. Registrar servicio                 *"
-                + "*   4. Servicios realizados por bus       *"
-                + "*   5. Servicios tomados por empleado     *"
-                + "*   6. Listado especial                   *"
-                + "*   7. Historico                          *"
-                + "*   8. Salir                              *"
+                + "*   1. Registrar empleado                 *\n"
+                + "*   2. Registrar bus                      *\n"
+                + "*   3. Registrar servicio                 *\n"
+                + "*   4. Servicios realizados por bus       *\n"
+                + "*   5. Servicios tomados por empleado     *\n"
+                + "*   6. Listado especial                   *\n"
+                + "*   7. Historico                          *\n"
+                + "*   8. Salir                              *\n"
                 + "*******************************************\n");
         op = teclado.next();
 
@@ -50,14 +51,15 @@ public class Consola {
                     System.out.println("Ingrese el nombre del empleado: ");
                     nombreEmp = teclado.next();
                     if (emp.validarSiExiste(cedula)) {
-                        emp.insertarFinal(cedula, nombreEmp);
-                    } else {
                         System.out.println("El empleado con cedula: " + cedula + " ya existe.");
+                    } else {                  
+                        emp.insertarFinal(cedula, nombreEmp);
                     }
                     System.out.println("¿Desea registrar otro empleado?");
                     op2 = teclado.next();
                 }
                 if("no".equals(op2)) {
+                    emp.imprimir();
                     menuPrincipal();
                 }
                                 
@@ -67,9 +69,9 @@ public class Consola {
                     System.out.println("Ingrese la placa del bus: ");
                     placa = teclado.next();
                     if (bus.validarSiExiste(placa)) {
-                        bus.insertarFinal(i++, placa);
-                    } else {
                         System.out.println("El bus con placa: " + placa + " ya existe.");
+                    } else {           
+                        bus.insertarFinal(i++, placa);
                     }
                     System.out.println("¿Desea registrar otro bus?");
                     op2 = teclado.next();
@@ -118,7 +120,8 @@ public class Consola {
                 }
                 break;
             case "6":
-
+                listEsp.insertar();
+                listEsp.imprimir();
                 break;
             case "7":
 

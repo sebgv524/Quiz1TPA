@@ -62,6 +62,18 @@ public class Empleados {
         }
         return existe;
     }
+    
+    public String nombreEmp(String cedula){
+        nodo reco = raiz;
+        String nombreEmp = null;
+        while (reco != null) {
+            if (reco.cedula.equals(cedula)) {
+               nombreEmp = reco.nombreEmp;
+            }
+        }
+        return nombreEmp;
+    }
+    
     public void imprimir() {
         nodo reco = raiz;
         System.out.println("Listado de todos los elementos de la cola.");

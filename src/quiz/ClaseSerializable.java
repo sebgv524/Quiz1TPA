@@ -13,4 +13,6 @@ import java.io.Serializable;
  * @author Jorge L Granda.
  */
 public class ClaseSerializable implements Serializable{
+    
+    
 }

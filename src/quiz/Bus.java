@@ -82,7 +82,16 @@ public class Bus {
         }
     }
 
-   
+   public int codigoBus(String placa){
+        nodo reco = raiz;
+        int codigo = 0;
+        while (reco != null) {
+            if (reco.placa.equals(placa)) {
+               codigo = reco.codigo;
+            }
+        }
+        return codigo;
+    }
     
     public void imprimir() {
         nodo reco = raiz;

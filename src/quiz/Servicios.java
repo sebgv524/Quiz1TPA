@@ -11,15 +11,15 @@ package quiz;
  */
 public class Servicios {
 
-    class nodo {
+    class nodoServ {
 
         public String cedula;
         public String placa;
         public int dia;
 
-        nodo sig;
+        nodoServ sig;
 
-        public nodo(String cedula, String placa, int dia) {
+        public nodoServ(String cedula, String placa, int dia) {
             this.cedula = cedula;
             this.placa = placa;
             this.dia = dia;
@@ -27,7 +27,7 @@ public class Servicios {
 
     }//Fin clase nodo
 
-    private nodo raiz, fondo;
+    private nodoServ raiz, fondo;
 
     public Servicios() {
         raiz = null;
@@ -35,7 +35,7 @@ public class Servicios {
     }
 
     public boolean validarSiExistePorPlaca(String placa) {
-        nodo reco = raiz;
+        nodoServ reco = raiz;
         boolean existe = false;
         while (reco != null) {
             if (reco.placa.equals(placa)) {
@@ -46,7 +46,7 @@ public class Servicios {
     }
     
     public boolean validarSiExistePorCedula(String cedula) {
-        nodo reco = raiz;
+        nodoServ reco = raiz;
         boolean existe = false;
         while (reco != null) {
             if (reco.cedula.equals(cedula)) {
@@ -65,8 +65,8 @@ public class Servicios {
     }
 
     public void insertarFinal(String cedula, String placa, int dia) {
-        nodo nuevo;
-        nuevo = new nodo(cedula, placa, dia);
+        nodoServ nuevo;
+        nuevo = new nodoServ(cedula, placa, dia);
         nuevo.sig = null;
         if (vacia()) {
             raiz = nuevo;
@@ -78,7 +78,7 @@ public class Servicios {
     }
 
     public void imprimirPorPlaca(String placa) {
-        nodo reco = raiz;
+        nodoServ reco = raiz;
         System.out.println("Listado de servicios realizado por el bus: " + placa);
         while (reco != null) {
             if (reco.placa.equals(placa)) {
@@ -91,7 +91,7 @@ public class Servicios {
     }
     
     public void imprimirPorCedula(String cedula) {
-        nodo reco = raiz;
+        nodoServ reco = raiz;
         System.out.println("Listado de servicios realizado por el empleado: " + cedula);
         while (reco != null) {
             if (reco.cedula.equals(cedula)) {
@@ -101,5 +101,5 @@ public class Servicios {
             }
         }
         System.out.println();
-    }
+    }    
 }
