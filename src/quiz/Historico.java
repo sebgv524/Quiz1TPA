@@ -14,7 +14,7 @@ import java.net.URLConnection;
 
 /**
  *
- * @author sala304
+ * @author Jorge L Granda
  */
 public class Historico {
 
