@@ -12,14 +12,15 @@ package quiz;
 public class Servicios {
     class nodo {
         public String cedula;
-        public String codigo;
+        public String placa;
         public int dia;
+        public int cont;
         
         nodo sig;
 
-        public nodo(String cedula, String codigo, int dia) {
+        public nodo(String cedula, String placa, int dia) {
             this.cedula = cedula;           
-            this.codigo = cedula;           
+            this.placa = placa;           
             this.dia = dia;           
         }
 
@@ -32,13 +33,11 @@ public class Servicios {
         fondo = null;
     }
 
-    public boolean validarSiExiste(String cedula, String codigo){
+    public boolean validarSiExiste(String cedula, String placa,int dia){
         boolean existe = false;
         Empleados emp = new Empleados();
         Bus bs = new Bus();
-//        if(){
-//            
-//        }
+       
         return existe;
     }
     public boolean vacia() {
@@ -49,9 +48,9 @@ public class Servicios {
         }
     }
 
-    public void insertarFinal(String cedula, String codigo) {
+    public void insertarFinal(String cedula, String placa,int dia) {
         nodo nuevo;
-        nuevo = new nodo(cedula, codigo);
+        nuevo = new nodo(cedula, placa,dia);
         nuevo.sig = null;
         if (vacia()) {
             raiz = nuevo;
