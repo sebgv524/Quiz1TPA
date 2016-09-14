@@ -98,10 +98,24 @@ public class Consola {
                 }
                 break;
             case "4":
-
+                System.out.println("Ingrese la placa del bus a consultar: ");
+                placa = teclado.next();
+                if (bus.validarSiExiste(placa) && serv.validarSiExistePorPlaca(placa)) {
+                    serv.imprimirPorPlaca(placa);
+                }
+                else{
+                    System.out.println("El bus con la placa " + placa + " no existe.");
+                }
                 break;
             case "5":
-
+                System.out.println("Ingrese la cedula del empleado a consultar: ");
+                cedula = teclado.next();
+                if (emp.validarSiExiste(cedula) && serv.validarSiExistePorCedula(cedula)) {
+                    serv.imprimirPorCedula(cedula);
+                }
+                else{
+                    System.out.println("El empleado con la cedula: "+ cedula + " no existe.");
+                }
                 break;
             case "6":
 

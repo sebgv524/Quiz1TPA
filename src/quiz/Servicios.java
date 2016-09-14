@@ -10,18 +10,19 @@ package quiz;
  * @author sala304
  */
 public class Servicios {
+
     class nodo {
+
         public String cedula;
         public String placa;
         public int dia;
-        public int cont;
-        
+
         nodo sig;
 
         public nodo(String cedula, String placa, int dia) {
-            this.cedula = cedula;           
-            this.placa = placa;           
-            this.dia = dia;           
+            this.cedula = cedula;
+            this.placa = placa;
+            this.dia = dia;
         }
 
     }//Fin clase nodo
@@ -33,13 +34,28 @@ public class Servicios {
         fondo = null;
     }
 
-    public boolean validarSiExiste(String cedula, String placa,int dia){
+    public boolean validarSiExistePorPlaca(String placa) {
+        nodo reco = raiz;
         boolean existe = false;
-        Empleados emp = new Empleados();
-        Bus bs = new Bus();
-       
+        while (reco != null) {
+            if (reco.placa.equals(placa)) {
+                existe = true;
+            }
+        }
         return existe;
     }
+    
+    public boolean validarSiExistePorCedula(String cedula) {
+        nodo reco = raiz;
+        boolean existe = false;
+        while (reco != null) {
+            if (reco.cedula.equals(cedula)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
+
     public boolean vacia() {
         if (raiz == null) {
             return true;
@@ -48,9 +64,9 @@ public class Servicios {
         }
     }
 
-    public void insertarFinal(String cedula, String placa,int dia) {
+    public void insertarFinal(String cedula, String placa, int dia) {
         nodo nuevo;
-        nuevo = new nodo(cedula, placa,dia);
+        nuevo = new nodo(cedula, placa, dia);
         nuevo.sig = null;
         if (vacia()) {
             raiz = nuevo;
@@ -60,13 +76,29 @@ public class Servicios {
             fondo = nuevo;
         }
     }
-    
-    public void imprimir() {
+
+    public void imprimirPorPlaca(String placa) {
         nodo reco = raiz;
-        System.out.println("Listado de todos los elementos de la cola.");
+        System.out.println("Listado de servicios realizado por el bus: " + placa);
         while (reco != null) {
-            System.out.print(reco.cedula + "-");
-            reco = reco.sig;
+            if (reco.placa.equals(placa)) {
+                System.out.print("Cedula: " + reco.cedula + "-");
+                System.out.print("Dia: " + reco.dia + "-");
+                reco = reco.sig;
+            }
+        }
+        System.out.println();
+    }
+    
+    public void imprimirPorCedula(String cedula) {
+        nodo reco = raiz;
+        System.out.println("Listado de servicios realizado por el empleado: " + cedula);
+        while (reco != null) {
+            if (reco.cedula.equals(cedula)) {
+                System.out.print("Placa: " + reco.placa + "-");
+                System.out.print("Dia: " + reco.dia + "-");
+                reco = reco.sig;
+            }
         }
         System.out.println();
     }
