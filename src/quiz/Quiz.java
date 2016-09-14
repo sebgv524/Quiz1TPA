@@ -18,6 +18,8 @@ public class Quiz {
         String cc;
         Historico h = new Historico("E12"); //Se le manda el empleado.
         Empleados emp = new Empleados();
+
+        
     }
     
 }

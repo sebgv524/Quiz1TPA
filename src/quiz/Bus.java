@@ -11,12 +11,12 @@ package quiz;
  */
 public class Bus {
     class nodo {
-        public String codigo;
+        public int codigo;
         public String placa;
         
         nodo sig;
 
-        public nodo(String codigo, String placa) {
+        public nodo(int codigo, String placa) {
             this.codigo = codigo;
 
             this.placa = placa;
@@ -38,8 +38,19 @@ public class Bus {
             return false;
         }
     }
+    
+    public boolean validarSiExiste(String placa){
+        nodo reco = raiz;
+        boolean existe = false;
+        while (reco != null) {
+            if (reco.placa.equals(placa)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
 
-    public void insertarFinal(String codigo, String placa) {
+    public void insertarFinal(int codigo, String placa) {
         nodo nuevo;
         nuevo = new nodo(codigo, placa);
         nuevo.sig = null;

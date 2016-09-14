@@ -13,12 +13,13 @@ public class Empleados {
     
      class nodo {
         public String cedula;
+        public String nombreEmp;
         
         nodo sig;
 
-        public nodo(String cedula) {
+        public nodo(String cedula, String nombreEmp) {
             this.cedula = cedula;
-            
+            this.nombreEmp = nombreEmp;
         }
 
     }//Fin clase nodo
@@ -38,9 +39,9 @@ public class Empleados {
         }
     }
 
-    public void insertarFinal(String cedula) {
+    public void insertarFinal(String cedula, String nombreEmp) {
         nodo nuevo;
-        nuevo = new nodo(cedula);
+        nuevo = new nodo(cedula,nombreEmp);
         nuevo.sig = null;
         if (vacia()) {
             raiz = nuevo;
@@ -51,6 +52,16 @@ public class Empleados {
         }
     }
     
+    public boolean validarSiExiste(String cedula){
+        nodo reco = raiz;
+        boolean existe = false;
+        while (reco != null) {
+            if (reco.cedula.equals(cedula)) {
+                existe = true;
+            }
+        }
+        return existe;
+    }
     public void imprimir() {
         nodo reco = raiz;
         System.out.println("Listado de todos los elementos de la cola.");
