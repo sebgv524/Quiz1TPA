@@ -10,10 +10,12 @@ package quiz;
  * @author sala304
  */
 public class Bus {
+
     class nodo {
+
         public int codigo;
         public String placa;
-        
+
         nodo sig;
 
         public nodo(int codigo, String placa) {
@@ -38,16 +40,22 @@ public class Bus {
             return false;
         }
     }
-    
-    public boolean validarSiExiste(String placa){
-        nodo reco = raiz;
-        boolean existe = false;
-        while (reco != null) {
-            if (reco.placa.equals(placa)) {
-                existe = true;
+
+    public boolean validarSiExiste(String placa) {
+        nodo aux;
+        boolean enc = false;
+        if (!vacia()) {
+            aux = raiz;
+            while (aux != null) {
+                if (aux.placa.equals(placa)) {
+                    System.out.println("Encontrado!");
+                    enc = true;
+                    return enc;
+                }
+                aux = aux.sig;
             }
         }
-        return existe;
+        return enc;
     }
 
     public void insertarFinal(int codigo, String placa) {
@@ -82,17 +90,17 @@ public class Bus {
         }
     }
 
-   public int codigoBus(String placa){
+    public int codigoBus(String placa) {
         nodo reco = raiz;
         int codigo = 0;
         while (reco != null) {
             if (reco.placa.equals(placa)) {
-               codigo = reco.codigo;
+                codigo = reco.codigo;
             }
         }
         return codigo;
     }
-    
+
     public void imprimir() {
         nodo reco = raiz;
         System.out.println("Listado de todos los elementos de la cola.");

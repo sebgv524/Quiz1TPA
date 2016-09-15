@@ -17,8 +17,8 @@ public class Quiz {
         Random rnd = new Random();
         String cc;
         Consola menu = new Consola();
-        Historico h = new Historico("E12"); //Se le manda el empleado.
-        Empleados emp = new Empleados();
+//        Historico h = new Historico("E12"); //Se le manda el empleado.
+//        Empleados emp = new Empleados();
         
         menu.menuPrincipal();
         
