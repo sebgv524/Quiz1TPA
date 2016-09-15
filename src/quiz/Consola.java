@@ -96,7 +96,7 @@ public class Consola {
                             }
                         }
                     }
-                    System.out.println("¿Desea registrar otro servicio?");
+                    System.out.println("¿Desea registrar otro servicio7?");
                     op2 = teclado.next();
 
                 }
@@ -124,7 +124,10 @@ public class Consola {
                 listEsp.imprimir();
                 break;
             case "7":
-
+                String ced;
+                System.out.println("Ingrese la cedula del empleado a consultar: ");
+                ced = teclado.next();
+                Historico h = new Historico(ced.toUpperCase());
                 break;
             case "8":
                 System.exit(0);
