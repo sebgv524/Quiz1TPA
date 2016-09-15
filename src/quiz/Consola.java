@@ -23,12 +23,12 @@ public class Consola {
         String nombreEmp;
         String placa;
         int dia;
-        int i=0;
+        int i = 0;
         Empleados emp = new Empleados();
         Bus bus = new Bus();
         Servicios serv = new Servicios();
         listadoEsp listEsp = new listadoEsp();
-        
+
         System.out.print("********************************************** \n"
                 + "*    Bienvenido                           *\n"
                 + "*******************************************\n"
@@ -44,7 +44,7 @@ public class Consola {
         op = teclado.next();
 
         switch (op) {
-            case "1":   
+            case "1":
                 while ("si".equals(op2)) {
                     System.out.println("Ingrese la cedula del empleado: ");
                     cedula = teclado.next();
@@ -52,17 +52,17 @@ public class Consola {
                     nombreEmp = teclado.next();
                     if (emp.validarSiExiste(cedula)) {
                         System.out.println("El empleado con cedula: " + cedula + " ya existe.");
-                    } else {                  
-                        emp.insertarFinal(cedula, nombreEmp);
+                    } else {
+                        emp.insertarFinal(cedula.toUpperCase(), nombreEmp);
                     }
                     System.out.println("¿Desea registrar otro empleado?");
                     op2 = teclado.next();
                 }
-                if("no".equals(op2)) {
+                if ("no".equals(op2)) {
                     emp.imprimir();
                     menuPrincipal();
                 }
-                                
+
                 break;
             case "2":
                 while ("si".equals(op2)) {
@@ -70,7 +70,7 @@ public class Consola {
                     placa = teclado.next();
                     if (bus.validarSiExiste(placa)) {
                         System.out.println("El bus con placa: " + placa + " ya existe.");
-                    } else {           
+                    } else {
                         bus.insertarFinal(i++, placa);
                     }
                     System.out.println("¿Desea registrar otro bus?");
@@ -81,12 +81,12 @@ public class Consola {
                 }
                 break;
             case "3":
-                while("si".equals(op2)){
+                while ("si".equals(op2)) {
                     System.out.println("Ingrese la placa del bus que realizara el servicio: ");
                     placa = teclado.next();
                     if (bus.validarSiExiste(placa)) {
                         System.out.println("Ingrese la cedula del empleado que usara el servicio: ");
-                        cedula = teclado.next();    
+                        cedula = teclado.next();
                         if (emp.validarSiExiste(cedula)) {
                             URLs url = new URLs();
                             if (url.sePuede(cedula)) {
@@ -96,7 +96,9 @@ public class Consola {
                             }
                         }
                     }
-                    
+                    System.out.println("¿Desea registrar otro servicio?");
+                    op2 = teclado.next();
+
                 }
                 break;
             case "4":
@@ -104,8 +106,7 @@ public class Consola {
                 placa = teclado.next();
                 if (bus.validarSiExiste(placa) && serv.validarSiExistePorPlaca(placa)) {
                     serv.imprimirPorPlaca(placa);
-                }
-                else{
+                } else {
                     System.out.println("El bus con la placa " + placa + " no existe.");
                 }
                 break;
@@ -114,9 +115,8 @@ public class Consola {
                 cedula = teclado.next();
                 if (emp.validarSiExiste(cedula) && serv.validarSiExistePorCedula(cedula)) {
                     serv.imprimirPorCedula(cedula);
-                }
-                else{
-                    System.out.println("El empleado con la cedula: "+ cedula + " no existe.");
+                } else {
+                    System.out.println("El empleado con la cedula: " + cedula + " no existe.");
                 }
                 break;
             case "6":
@@ -127,7 +127,7 @@ public class Consola {
 
                 break;
             case "8":
-
+                System.exit(0);
                 break;
             default:
                 System.out.println("No se reconoce la opcion insertada. Intente de nuevo.");

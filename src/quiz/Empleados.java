@@ -56,9 +56,10 @@ public class Empleados {
         nodo reco = raiz;
         boolean existe = false;
         while (reco != null) {
-            if (reco.cedula.equals(cedula)) {
+            if (reco.cedula == cedula) {
                 existe = true;
             }
+            reco = reco.sig;
         }
         return existe;
     }

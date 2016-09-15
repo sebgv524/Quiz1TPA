@@ -41,10 +41,11 @@ public class Servicios {
             if (reco.placa.equals(placa)) {
                 existe = true;
             }
+            reco = reco.sig;
         }
         return existe;
     }
-    
+
     public boolean validarSiExistePorCedula(String cedula) {
         nodoServ reco = raiz;
         boolean existe = false;
@@ -84,12 +85,12 @@ public class Servicios {
             if (reco.placa.equals(placa)) {
                 System.out.print("Cedula: " + reco.cedula + "-");
                 System.out.print("Dia: " + reco.dia + "-");
-                reco = reco.sig;
             }
+            reco = reco.sig;
         }
         System.out.println();
     }
-    
+
     public void imprimirPorCedula(String cedula) {
         nodoServ reco = raiz;
         System.out.println("Listado de servicios realizado por el empleado: " + cedula);
@@ -101,5 +102,5 @@ public class Servicios {
             }
         }
         System.out.println();
-    }    
+    }
 }
