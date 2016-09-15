@@ -11,7 +11,7 @@ package quiz;
  */
 public class Bus {
 
-    class nodo {
+    public class nodo {
 
         public int codigo;
         public String placa;
@@ -26,7 +26,7 @@ public class Bus {
 
     }//Fin clase nodo
 
-    private nodo raiz, fondo;
+    public nodo raiz, fondo;
 
     public Bus() {
         raiz = null;
@@ -49,7 +49,7 @@ public class Bus {
             while (aux != null) {
                 if (aux.placa.equals(placa)) {
                     System.out.println("Encontrado!");
-                    enc = true;
+                    enc=true;
                     return enc;
                 }
                 aux = aux.sig;

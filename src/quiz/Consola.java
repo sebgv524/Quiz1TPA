@@ -15,11 +15,7 @@ import java.util.Scanner;
 public class Consola {
 
     Scanner teclado = new Scanner(System.in);
-
-    public void menuPrincipal() throws IOException {
-        String op;
-        String op2 = "si";
-        String cedula;
+    String cedula;
         String nombreEmp;
         String placa;
         int dia;
@@ -28,6 +24,11 @@ public class Consola {
         Bus bus = new Bus();
         Servicios serv = new Servicios();
         listadoEsp listEsp = new listadoEsp();
+
+    public void menuPrincipal() throws IOException {
+        String op;
+        String op2 = "si";
+        
 
         System.out.print("********************************************** \n"
                 + "*    Bienvenido                           *\n"
@@ -60,12 +61,13 @@ public class Consola {
                 }
                 if ("no".equals(op2)) {
                     emp.imprimir();
+                    System.out.println("");
                     menuPrincipal();
                 }
 
                 break;
             case "2":
-                while ("si".equals(op2)) {
+                do {
                     System.out.println("Ingrese la placa del bus: ");
                     placa = teclado.next();
                     if (bus.validarSiExiste(placa)) {
@@ -75,14 +77,17 @@ public class Consola {
                     }
                     System.out.println("¿Desea registrar otro bus?");
                     op2 = teclado.next();
-                }
+                } while ("si".equals(op2));
                 if ("no".equals(op2)) {
-                    menuPrincipal();
+                    bus.imprimir();
+                    System.out.println("");
+                    menuPrincipal();        
                 }
                 break;
             case "3":
-                while ("si".equals(op2)) {
-                    System.out.println("Ingrese la placa del bus que realizara el servicio: ");
+                
+                do {
+                   System.out.println("Ingrese la placa del bus que realizara el servicio: ");
                     placa = teclado.next();
                     if (bus.validarSiExiste(placa)) {
                         System.out.println("Ingrese la cedula del empleado que usara el servicio: ");
@@ -95,11 +100,16 @@ public class Consola {
                                 serv.insertarFinal(cedula, placa, dia);
                             }
                         }
+                        else{
+                            System.out.println("La cedula ingresada no existe");
+                        }
+                    }
+                    else{
+                        System.out.println("La placa ingresada no existe");
                     }
                     System.out.println("¿Desea registrar otro servicio7?");
-                    op2 = teclado.next();
-
-                }
+                    op2 = teclado.next(); 
+                } while ("si".equals(op2));  
                 break;
             case "4":
                 System.out.println("Ingrese la placa del bus a consultar: ");
